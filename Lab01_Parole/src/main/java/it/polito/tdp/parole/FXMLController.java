@@ -41,6 +41,8 @@ public class FXMLController {
     @FXML
     void doInsert(ActionEvent event) {
     	// TODO
+    	
+    	long start = System.nanoTime();
     	this.elenco.addParola(txtParola.getText());
     	String s = "";
     	for(String p : elenco.getElenco()) {
@@ -48,7 +50,8 @@ public class FXMLController {
     	}
     	txtResult.setText(s);
     	txtParola.clear();
-    	String tempo = Long.toString(System.nanoTime());
+    	
+    	String tempo = Long.toString(System.nanoTime() - start);
     	txtTempo.setText(tempo);
     	
     }
@@ -56,16 +59,17 @@ public class FXMLController {
     @FXML
     void doReset(ActionEvent event) {
     	// TODO
+    	long start = System.nanoTime();
     	elenco.reset();
     	txtResult.setText("");
-    	String tempo = Long.toString(System.nanoTime());
+    	String tempo = Long.toString(System.nanoTime() - start);
     	txtTempo.setText(tempo);
-    	
     }
     
     @FXML
     void doCancella(ActionEvent event) {
     	
+    	long start = System.nanoTime();
     	this.elenco.cancella(txtResult.getSelectedText());
     	
     	String s = "";
@@ -74,7 +78,7 @@ public class FXMLController {
     	}
     	txtResult.setText(s);
     	txtParola.setText("");
-    	String tempo = Long.toString(System.nanoTime());
+    	String tempo = Long.toString(System.nanoTime() - start);
     	txtTempo.setText(tempo);
     }
 
@@ -89,5 +93,5 @@ public class FXMLController {
         elenco = new Parole() ;
     }
 }
-//160764349635500   PIU' VELOCE LA LINKEDLIST!!!!1
-//160815213141300
+//Inserimento "ciao" con LinkedList:   1439100 nanosecondi
+//Iserimento "ciao" con ArrayList:     1619700 nanosecondi
