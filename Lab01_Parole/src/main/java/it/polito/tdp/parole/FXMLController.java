@@ -19,6 +19,12 @@ public class FXMLController {
 
     @FXML
     private URL location;
+    
+    @FXML
+    private TextField txtTempo;
+    
+    @FXML
+    private Button btnCancella;
 
     @FXML
     private TextField txtParola;
@@ -35,11 +41,41 @@ public class FXMLController {
     @FXML
     void doInsert(ActionEvent event) {
     	// TODO
+    	this.elenco.addParola(txtParola.getText());
+    	String s = "";
+    	for(String p : elenco.getElenco()) {
+    		s+=p+"\n";
+    	}
+    	txtResult.setText(s);
+    	txtParola.setText("");
+    	String tempo = Long.toString(System.nanoTime());
+    	txtTempo.setText(tempo);
+    	
     }
 
     @FXML
     void doReset(ActionEvent event) {
     	// TODO
+    	elenco.reset();
+    	txtResult.setText("");
+    	String tempo = Long.toString(System.nanoTime());
+    	txtTempo.setText(tempo);
+    	
+    }
+    
+    @FXML
+    void doCancella(ActionEvent event) {
+    	
+    	this.elenco.cancella(txtParola.getText());
+    	
+    	String s = "";
+    	for(String p : elenco.getElenco()) {
+    		s+=p+"\n";
+    	}
+    	txtResult.setText(s);
+    	txtParola.setText("");
+    	String tempo = Long.toString(System.nanoTime());
+    	txtTempo.setText(tempo);
     }
 
     @FXML
@@ -47,8 +83,11 @@ public class FXMLController {
         assert txtParola != null : "fx:id=\"txtParola\" was not injected: check your FXML file 'Scene.fxml'.";
         assert btnInserisci != null : "fx:id=\"btnInserisci\" was not injected: check your FXML file 'Scene.fxml'.";
         assert txtResult != null : "fx:id=\"txtResult\" was not injected: check your FXML file 'Scene.fxml'.";
+        assert txtTempo != null : "fx:id=\"txtTempo\" was not injected: check your FXML file 'Scene.fxml'.";
         assert btnReset != null : "fx:id=\"btnReset\" was not injected: check your FXML file 'Scene.fxml'.";
-
+        assert btnCancella != null : "fx:id=\"btnCancella\" was not injected: check your FXML file 'Scene.fxml'.";
         elenco = new Parole() ;
     }
 }
+//160764349635500   PIU' VELOCE LA LINKEDLIST!!!!1
+//160815213141300
