@@ -47,7 +47,7 @@ public class FXMLController {
     		s+=p+"\n";
     	}
     	txtResult.setText(s);
-    	txtParola.setText("");
+    	txtParola.clear();
     	String tempo = Long.toString(System.nanoTime());
     	txtTempo.setText(tempo);
     	
@@ -66,7 +66,7 @@ public class FXMLController {
     @FXML
     void doCancella(ActionEvent event) {
     	
-    	this.elenco.cancella(txtParola.getText());
+    	this.elenco.cancella(txtResult.getSelectedText());
     	
     	String s = "";
     	for(String p : elenco.getElenco()) {

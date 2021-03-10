@@ -44,12 +44,8 @@ public class Parole {
 
 	public void cancella(String p) {
 		
-		LinkedList<String> elenco1 = new LinkedList<String>();
-		for(String ss : this.elenco) {
-			if(p.equals(ss))
-				elenco1.add(ss);
-		}
-		elenco.removeAll(elenco1);
+		if (this.elenco.contains(p))
+			elenco.remove(p);
 		
 	}
 }
